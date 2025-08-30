@@ -1,46 +1,43 @@
 import java.sql.Array;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
-import java.util.stream.Gatherer;
 
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
     public static void main(String[] args) {
-       ArrayList<Integer> moi = new ArrayList<>(List.of(1,3,6,2,10,11,4));
-       ArrayList<Integer> foo = selectionSort(moi);
-       System.out.println(foo);
+        ArrayList<Integer> test = new ArrayList<>(List.of(2, 3, 18, 9, 4, 5, 8, 10, 6));
+        ArrayList<Integer> moi = quickSort(test);
+
+        System.out.println(moi);
     }
 
     /**
-     * This is the implementation of the selection sort algorithm
-     * @param nums the collection that needs to be sorted
-     * @return a sorted ArrayList from smallest to largest
-     *
+     * Quick sort algorithm
+     * @param arr a collection of items to be sorted
+     * @return a sorted array
      */
-    static ArrayList<Integer> selectionSort(ArrayList<Integer> nums){
-        ArrayList<Integer> sortedNums = new ArrayList<>();
-        int length = nums.size();
-        for (int i = 0; i < length; i++){
-            System.out.println(nums);
-
-            int smallestIndex = findSmallestIndex(nums);
-            int smallestValue = nums.remove(smallestIndex);
-            sortedNums.add(smallestValue);
-        }
-        return sortedNums;
-    }
-
-    static int findSmallestIndex(ArrayList<Integer> nums){
-        int smallestValue = nums.get(0);
-        int smallestIndex = 0;
-        for (int i = 0; i < nums.size(); i++){
-            if (nums.get(i) < smallestValue){
-                smallestValue = nums.get(i);
-                smallestIndex = i;
+    static ArrayList<Integer> quickSort(ArrayList<Integer> arr){
+        ArrayList<Integer> lesserArr = new ArrayList<>();
+        ArrayList<Integer> greaterArr = new ArrayList<>();
+        ArrayList<Integer> combined = new ArrayList<>();
+        if (arr.size() < 2){
+            return arr;
+        }else {
+            int pivot = arr.get(0);
+            for (int i : arr) {
+                if (i < pivot){
+                    lesserArr.add(i);
+                }else if (i > pivot){
+                    greaterArr.add(i);
+                }
             }
+            combined.addAll(quickSort(lesserArr));
+            combined.add(pivot);
+            combined.addAll(quickSort(greaterArr));
+            return combined;
         }
-        return smallestIndex;
     }
+
+
 }
