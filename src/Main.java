@@ -6,10 +6,10 @@ import java.util.List;
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
     public static void main(String[] args) {
-        ArrayList<Integer> test = new ArrayList<>(List.of(2, 3, 18, 9, 4, 5, 8, 10, 6));
-        ArrayList<Integer> moi = quickSort(test);
-
-        System.out.println(moi);
+        MyHashTable<String> moi = new MyHashTable<>(10);
+        moi.add("name", "David");
+        moi.add("age", "23");
+        moi.printAll();
     }
 
     /**
