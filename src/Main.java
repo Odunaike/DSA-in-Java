@@ -9,7 +9,7 @@ public class Main {
         MyHashTable<String> moi = new MyHashTable<>(10);
         moi.add("name", "David");
         moi.add("age", "23");
-        moi.printAll();
+        System.out.println(moi.get("age"));
     }
 
     /**

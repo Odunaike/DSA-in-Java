@@ -1,4 +1,3 @@
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class MyHashTable<E> {
@@ -19,10 +18,9 @@ public class MyHashTable<E> {
         list.set(index, element);
     }
 
-    public void  printAll(String key){
-        for (E e : list){
-            System.out.println(e);
-        }
+    public E get(String key){
+        int index = hashingFunction(key);
+        return list.get(index);
     }
 
     public void printAll(){
